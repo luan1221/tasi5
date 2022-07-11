@@ -1,28 +1,29 @@
 const net = require('net')
-const readline = require('readline')
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
+let clients = []
 
 const handleConnection = socket => {
   console.log("We had a connection!")
+  socket.write('Welcome to chat, please type your name before your messages')
+  
+  clients.push(socket)
+  
   socket.on('end', () => {
-    console.log('A client disconnected')
-  })
-  socket.on('data', data => {
-    const str = data.toString()
-    if (str === 'end') {
-      socket.end()
-    }
-    console.log(str)
+    console.log('A client has been disconnected')
   })
 
-  rl.addListener('line', line => {
-    socket.write(line)
+  socket.on('data', data => {
+    const message = data.toString()
+    if (message === 'end') {
+      socket.end()
+    }
+    clients.forEach(client => {
+      if (client === socket) return 
+      client.write(message)
+    })
   })
 }
 
-const server  = net.createServer(handleConnection)
+const server = net.createServer(handleConnection)
+
 server.listen(3030, '127.0.0.1')
