@@ -13,4 +13,8 @@ client.connect(3030, '127.0.0.1', () => {
   rl.addListener('line', line => {
     client.write(line)
   })
+
+  client.on('data', data => {
+    console.log(data.toString())
+  })
 })

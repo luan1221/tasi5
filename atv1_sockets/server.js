@@ -1,4 +1,10 @@
 const net = require('net')
+const readline = require('readline')
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
 
 const handleConnection = socket => {
   console.log("We had a connection!")
@@ -11,6 +17,10 @@ const handleConnection = socket => {
       socket.end()
     }
     console.log(str)
+  })
+
+  rl.addListener('line', line => {
+    socket.write(line)
   })
 }
 
