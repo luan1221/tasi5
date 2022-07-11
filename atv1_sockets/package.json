@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "back": "node server.js",
+    "front": "node client.js"
   },
   "keywords": [],
   "author": "",
