@@ -18,21 +18,28 @@ const server = net.createServer(socket => {
       socket.name = message
       clients.push(socket)
       socket.allowMessages = true
+      sendToAll(`${socket.name} entrou no chat`)
     } else {
       if (message === ':q') {
+        sendToAll(`${socket.name} saiu`)
         clients = clients.filter(client => client !== socket)
         socket.end()
+      } else {
+        sendToAll(`[${socket.name}]: ${message}`)
       }
-      clients.forEach(client => {
-        if (client.name === socket.name) return
-        client.write(`[${socket.name}]: ${message}`)
-      })
     }
   })
 
   socket.on('end', () => {
     console.log('A client has been disconnected')
   })
+
+  const sendToAll = (message) => {
+    clients.forEach(client => {
+      if (client.name === socket.name) return
+      client.write(message)
+    })
+  }
 
 })
 
