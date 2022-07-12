@@ -9,6 +9,7 @@ const rl = readline.createInterface({
 })
 
 client.connect(3030, '127.0.0.1', () => {
+  console.clear()
   console.log('Conected with server')
   rl.addListener('line', line => {
     client.write(line)
