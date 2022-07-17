@@ -13,3 +13,7 @@ socket.connect(4002, '127.0.0.1', () => {
         socket.send(line)
     })
 })
+
+socket.on('message', (msg, rinfo) => {
+    console.log(msg.toString())
+})
