@@ -1,4 +1,4 @@
 # Sistemas Distribuídos
-## IF1005 - Tópicos Avançados em SI 5
+## IF1015 - Tópicos Avançados em SI 6
 
 Repositório para atividades e projeto da disciplina de SI
