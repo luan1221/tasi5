@@ -10,7 +10,7 @@ const client = new calcPackage.Calculator("localhost:7500", grpc.credentials.cre
 console.log('Calculadora!!')
 
 
-function calculate() {
+(function calculate() {
   const n1 = prompt("Digite o primeiro numero: ")
   const n2 = prompt("Digite o segundo numero: ")
   const op = prompt("Digite a operacao desejada: '+ | - | * | /' ")
@@ -21,6 +21,4 @@ function calculate() {
   }, (err, response) => {
     console.log("Result: " + response.resultNumber)
   })
-}
-
-calculate()
+})()
