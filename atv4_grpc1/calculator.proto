@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package calcPackage; 
+
+service Calculator {
+   rpc sendResult(Operation) returns (Result);
+}
+
+message Result {
+   float resultNumber = 1;
+}
+
+message Operation {
+   float firstNumber = 1;
+   float secondNumber = 2;
+   string operationType = 3;
+}

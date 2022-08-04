@@ -1,0 +1,17 @@
+{
+  "name": "atv4_grpc1",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "back": "node server.js",
+    "front": "node client.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.7.0",
+    "grpc": "^1.24.11",
+    "prompt-sync": "^4.2.0"
+  }
+}
